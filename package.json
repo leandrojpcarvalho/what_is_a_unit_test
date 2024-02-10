@@ -1,0 +1,11 @@
+{
+  "name": "what_is_a_unit_test",
+  "version": "1.0.0",
+  "description": "repositore to explain about unit test",
+  "main": "app.ts",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "leandrojpcarvalho",
+  "license": "ISC"
+}
