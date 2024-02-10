@@ -2,10 +2,10 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "./src/app.ts",
+  "main": "./src/server.ts",
   "scripts": {
     "start": "tsc && node ./build/app.js",
-    "dev": " tsnd ./src/app.ts --watch",
+    "dev": " tsnd ./src/server.ts --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

@@ -1,12 +1,29 @@
-import express from 'express';
+import express, { Router } from 'express';
 
-const PORT = 3002;
+type MapRoutes = {
+  [key: string]: Router;
+};
 
-const server = express();
-server;
+export default class App {
+  private server: express.Express;
+  private routes: MapRoutes;
 
-server.use('/', (req, res) => res.send('Bem vindosef!'));
+  constructor(expressServer: express.Express, routes: MapRoutes) {
+    this.routes = routes;
+    this.server = expressServer;
+    this.startRoutes();
+  }
 
-server.listen(PORT, () =>
-  console.log(`Servidor rodando em node na porta:${PORT}`)
-);
+  private startRoutes() {
+    this.server.use(express.json());
+    Object.entries(this.routes).forEach(([route, fn]) => {
+      this.server.use(`/${route}`, fn);
+    });
+  }
+
+  startServer(port: Number) {
+    this.server.listen(port, () => {
+      console.log('The serve is running at port: ', port);
+    });
+  }
+}
