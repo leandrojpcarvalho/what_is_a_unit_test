@@ -13,15 +13,15 @@ export default class App {
     this.server = expressServer;
   }
 
-  private async startRoutes() {
+  private startRoutes() {
     this.server.use(express.json());
     Object.entries(this.routes).forEach(([route, fn]) => {
       this.server.use(`/${route}`, fn);
     });
   }
 
-  async startServer(port: Number) {
-    await this.startRoutes();
+  startServer(port: Number) {
+    this.startRoutes();
     this.server.listen(port, () => {
       console.log('The serve is running at port: ', port);
     });
