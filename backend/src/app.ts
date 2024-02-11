@@ -11,17 +11,17 @@ export default class App {
   constructor(expressServer: express.Express, routes: MapRoutes) {
     this.routes = routes;
     this.server = expressServer;
-    this.startRoutes();
   }
 
-  private startRoutes() {
+  private async startRoutes() {
     this.server.use(express.json());
     Object.entries(this.routes).forEach(([route, fn]) => {
       this.server.use(`/${route}`, fn);
     });
   }
 
-  startServer(port: Number) {
+  async startServer(port: Number) {
+    await this.startRoutes();
     this.server.listen(port, () => {
       console.log('The serve is running at port: ', port);
     });

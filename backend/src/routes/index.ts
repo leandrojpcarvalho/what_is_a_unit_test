@@ -1,4 +1,5 @@
 import express, { Request, Response } from 'express';
+import todoRoute from './todo';
 
 const defaultRoute = express.Router();
 
@@ -10,6 +11,7 @@ defaultRoute.get('/', firstRoute);
 
 const routes = {
   '': defaultRoute,
+  todo: todoRoute,
 };
 
 export default routes;
