@@ -67,7 +67,7 @@ export default class Sqlite {
     stmt.finalize();
   }
 
-  async run(sql: string, value: CreationTask) {
+  async run(sql: string, value: Partial<ITasks>) {
     return new Promise<ITasks[] | Error>((resolve, reject) => {
       this.db.run(
         sql,
