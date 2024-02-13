@@ -1,6 +1,7 @@
 import Tasks from '../db/model/tasks';
 import IModel from '../interface/IModel';
 import ITasks from '../interface/ITasks';
+import { SelectKeyOf } from '../types/generics';
 
 export default class ToDoModel implements IModel<ITasks> {
   private model: IModel<ITasks>;
@@ -19,5 +20,9 @@ export default class ToDoModel implements IModel<ITasks> {
 
   async insert(data: Omit<ITasks, 'id'>) {
     return this.model.insert(data);
+  }
+
+  async delete(data: SelectKeyOf<ITasks, 'id'>) {
+    return this.model.delete(data);
   }
 }

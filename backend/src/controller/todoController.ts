@@ -26,4 +26,10 @@ export default class ToDoController implements IController {
     const { status, data } = await this.service.insert(req.body);
     return res.status(status).json(data);
   }
+
+  async delete(req: Request, res: Response) {
+    const { id } = req.params;
+    const { status, data } = await this.service.delete(Number(id));
+    return res.status(status).json(data);
+  }
 }
