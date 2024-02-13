@@ -9,11 +9,15 @@ export default class ToDoModel implements IModel<ITasks> {
     this.model = model;
   }
 
-  getAll() {
+  async getAll() {
     return this.model.getAll();
   }
 
-  getById(id: number) {
+  async getById(id: number) {
     return this.model.getById(id);
+  }
+
+  async insert(data: Omit<ITasks, 'id'>) {
+    return this.model.insert(data);
   }
 }

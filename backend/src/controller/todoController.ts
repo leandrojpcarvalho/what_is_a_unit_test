@@ -21,4 +21,9 @@ export default class ToDoController implements IController {
     const { status, data } = await this.service.getById(Number(id));
     return res.status(status).json(data);
   }
+
+  async insert(req: Request, res: Response) {
+    const { status, data } = await this.service.insert(req.body);
+    return res.status(status).json(data);
+  }
 }
