@@ -1,5 +1,5 @@
 node_modules
 .vscode
 backend/node_modules
-backend/build
 backend/src/db/db.db
+backend/build
