@@ -1,16 +1,9 @@
 import SqLite3 from 'sqlite3';
 import ITasks from '../interface/ITasks';
-import Tasks from './model/tasks';
-import { Creation } from '../types/generics';
+import defaultTasks from './model/seeds/seed.todo';
 import { CreationTask } from '../types/database';
 
 type ListOfTasks = CreationTask[];
-
-const defaultTasks: ListOfTasks = [
-  { description: 'implementar Base de dados SQL com Docker' },
-  { description: 'implementar ORM sequelize' },
-  { description: 'Implementar ORM Prisma' },
-];
 
 export default class Sqlite {
   public static instance: Sqlite | null = null;
