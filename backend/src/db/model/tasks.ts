@@ -2,6 +2,7 @@ import IModel from '../../interface/IModel';
 import Sqlite from '../../db/';
 import ITasks from '../../interface/ITasks';
 import { CreationTask } from '../../types/database';
+import { SelectKeyOf } from '../../types/generics';
 
 export default class Tasks implements IModel<ITasks> {
   private db: Sqlite;
@@ -24,6 +25,10 @@ export default class Tasks implements IModel<ITasks> {
       `INSERT INTO tasks (description, created_at, updated_at) VALUES (?,?,?)`,
       data
     );
+  }
+
+  async delete({ id }: SelectKeyOf<ITasks, 'id'>) {
+    return this.db.run('DELETE FROM tasks WHERE id=?', { id });
   }
 
   private async transformData(sql: string) {

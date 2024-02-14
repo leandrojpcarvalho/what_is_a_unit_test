@@ -36,4 +36,11 @@ export default class ToDoService implements IService<ITasks> {
       }),
     };
   }
+
+  async delete(id: number) {
+    return {
+      status: 200,
+      data: await this.model.delete({ id }),
+    };
+  }
 }
