@@ -1,5 +1,4 @@
 import express, { Request, Response } from 'express';
-import routeToDo from './Todo.sequelize';
 import todoRoute from './todo';
 
 const defaultRoute = express.Router();
@@ -12,7 +11,6 @@ defaultRoute.get('/', firstRoute);
 
 const routes = {
   '': defaultRoute,
-  todoS: routeToDo,
   todo: todoRoute,
 };
 

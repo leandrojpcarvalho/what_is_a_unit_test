@@ -6,7 +6,7 @@ import { SelectKeyOf } from '../types/generics';
 export default class ToDoModel implements IModel<ITasks> {
   private model: IModel<ITasks>;
 
-  constructor(model = new Tasks()) {
+  constructor(model: IModel<ITasks> = new Tasks()) {
     this.model = model;
   }
 

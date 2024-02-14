@@ -1,22 +1,12 @@
-import { Sequelize } from '@sequelize/core';
-import todoSeeds from './model/seeds/seed.todo';
-import Todo from './model/sequelize/Todo';
+import { Sequelize, Options } from '@sequelize/core';
 
-export const sequelize = new Sequelize({
+const config: Options = {
   dialect: 'sqlite',
   storage: './src/db/db.db',
-  models: [Todo],
+  models: [],
   define: {
     underscored: true,
   },
-});
-
-const seedingHard = async () => {
-  await sequelize.sync();
-  for (let i = 0; i < todoSeeds.length; i += 1) {
-    const { description } = todoSeeds[i];
-    await Todo.findOrCreate({ where: { description } });
-  }
 };
 
-seedingHard();
+export const sequelize = new Sequelize(config);

@@ -1,7 +1,14 @@
-import { Router, response } from 'express';
+import { Router } from 'express';
 import ToDoController from '../controller/todoController';
+import ToDoService from '../service/todoService';
+import ToDoModel from '../model/todoModel';
+import TasksSequelize from '../db/model/tasks.sequelize';
 
-const controller = new ToDoController();
+const taskSequelize = new TasksSequelize();
+
+const model = new ToDoModel();
+const service = new ToDoService(model);
+const controller = new ToDoController(service);
 
 const todoRoute = Router();
 

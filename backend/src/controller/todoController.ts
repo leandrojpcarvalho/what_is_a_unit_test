@@ -7,7 +7,7 @@ import ToDoService from '../service/todoService';
 export default class ToDoController implements IController {
   private service: IService<ITasks>;
 
-  constructor(service = new ToDoService()) {
+  constructor(service: ToDoService) {
     this.service = service;
   }
 
